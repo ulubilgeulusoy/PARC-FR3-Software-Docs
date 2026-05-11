@@ -1,0 +1,9 @@
+site/
+.venv/
+docs_env/
+_remote_scan/
+*_extracted.txt
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

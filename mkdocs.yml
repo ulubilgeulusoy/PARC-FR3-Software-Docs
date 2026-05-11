@@ -1,0 +1,53 @@
+site_name: PARC FR3 Software Documentation
+site_description: Central documentation for FR3 robot software, experiment GUIs, setup, and operations.
+site_author: PARC / Arquilla Research Group
+repo_name: ulubilgeulusoy/PARC-FR3-Software-Docs
+repo_url: https://github.com/ulubilgeulusoy/PARC-FR3-Software-Docs
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Overview: getting-started/overview.md
+      - Repository Map: getting-started/repository-map.md
+      - Quick Start: getting-started/quick-start.md
+  - Architecture:
+      - ROS2 ViSP libfranka 101: architecture/ros2-visp-libfranka-101.md
+      - System Data Flow: architecture/system-data-flow.md
+      - ROS2 vs LSL: architecture/ros2-vs-lsl.md
+  - FR3 Platform:
+      - FR3 User Guide: fr3-platform/fr3-user-guide.md
+      - Installation Lessons Learned: fr3-platform/installation-lessons-learned.md
+      - Version Compatibility Matrix: fr3-platform/version-compatibility-matrix.md
+      - Network and Permissions: fr3-platform/network-and-permissions.md
+      - Safety and Operating Notes: fr3-platform/safety-and-operating-notes.md
+  - Workspaces:
+      - Franka Workspace Guide: workspaces/franka-workspace-guide.md
+      - Baseline vs Jointfailsafe: workspaces/baseline-vs-jointfailsafe.md
+      - Build Source Runtime Rules: workspaces/build-source-runtime-rules.md
+  - Repositories:
+      - franka_kinesthetic_teaching_GUI: repositories/franka-kinesthetic-teaching-gui.md
+      - FR3_control_GUI: repositories/fr3-control-gui.md
+      - FR3_visual_servo_examples: repositories/fr3-visual-servo-examples.md
+      - franka_ws_jointfailsafe: repositories/franka-ws-jointfailsafe.md
+      - Investment-HRI-Experiment-Task-GUIs: repositories/investment-hri-experiment-task-guis.md
+      - Event_marker_LSL_GUI: repositories/event-marker-lsl-gui.md
+  - Operations:
+      - Standard Workflows: operations/standard-workflows.md
+      - Troubleshooting: operations/troubleshooting.md
+      - Known Limitations: operations/known-limitations.md
+  - API References:
+      - Overview: api-references/overview.md
+      - C++ Doxygen Links: api-references/cpp-doxygen-links.md
+      - Python API Plan: api-references/python-api-plan.md
+  - Appendix:
+      - Branch Strategy and Release Notes: appendix/branch-strategy-and-release-notes.md
+      - Glossary: appendix/glossary.md
