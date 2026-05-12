@@ -1,12 +1,15 @@
-﻿# PARC FR3 Capabilitites
+﻿# PARC FR3 Capabilities
 
-This section gives a high-level repository map for the three core FR3 software capabilities currently used in the PARC ecosystem.
+This section gives a high-level repository map for the three core FR3 software capabilities currently used in the PARC ecosystem. 
 
 ## Capability Map
 
 - **Kinesthetic Teaching** (`franka_kinesthetic_teaching_GUI`): This mode lets an operator physically guide the robot arm by hand so the robot can learn and replay that motion path. It provides teach-by-hand recording, gravity mode support, and trajectory playback workflows for FR3.
 - **Visual Servoing** (`FR3_visual_servo_examples`): This mode makes the robot move based on what a camera sees, instead of following a manually taught path. It is camera-based FR3 control using ViSP + RealSense + AprilTag tracking.
 - **Control GUI** (`FR3_control_GUI`): This is the operator launcher used to start and manage FR3 tools from a single Windows or Ubuntu interface. It starts **kinesthetic teaching** and **visual servoing** workflows only, with remote SSH/X11 or non-remote variants, and includes Lab Streaming Layer (LSL) integration for robot data sharing.
+
+## Why were these capabilities implemented?
+Kinesthetic teaching and visual servoing were selected for the PARC FR3 platform to support a human-robot interaction (HRI) experiment scenario. Kinesthetic teaching allows participants to teach the robot executable actions directly, while visual servoing allows participants to move the robot to desired locations in real time using visual markers without requiring complex trajectory design. The Control GUI provides a communication interface to access these capabilities and also provides Lab Streaming Layer (LSL) integration for synchronizing robot data (for example, whether the robot arm or gripper is moving) with other data types such as ECG.
 
 ## Repository and Branch Summary
 

@@ -1,7 +1,9 @@
-# Quick Start
+﻿# Quick Start
 
-1. Read the repository map and pick the workflow (control, visual servoing, kinesthetic teaching, or experiment session).
-2. Confirm FR3 platform compatibility (Ubuntu/RT kernel/ROS/libfranka/firmware).
-3. Confirm network/IP and permissions prerequisites.
-4. Use repo pages for repository-specific launch and dependency details.
-5. Use troubleshooting page for X11, ROS workspace sourcing, and version mismatch failures.
+Use this sequence to navigate the documentation efficiently:
+
+1. Read **PARC FR3 Capabilitites** first to understand what capability areas are currently available.
+2. Read **Capability Basics** next to understand core concepts such as ROS 2 (with workspaces), `libfranka`, and ViSP.
+3. Read **Safety** before attempting operation or development work.
+4. If you need to set up FR3 control on a new computer, go to **FR3 Control System Installation Guide**.
+5. If you want to operate the FR3 arm or develop further capabilities, go to **FR3 User Guide**.
