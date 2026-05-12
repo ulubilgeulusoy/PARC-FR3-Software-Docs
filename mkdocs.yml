@@ -30,18 +30,17 @@ nav:
   - FR3 User Guide:
       - Sections:
           - Summary: user-guide/summary/fr3-user-guide-summary.md
-          - Read Before Proceed: user-guide/read-before-proceed.md
-          - Computers: user-guide/computers.md
-          - FR3 Basics: user-guide/fr3-basics.md
-          - FR3 Start-up Checklist: user-guide/start-up-checklist.md
+          - Read Before Proceed: user-guide/basics/read-before-proceed.md
+          - Computers: user-guide/basics/computers.md
+          - FR3 Basics: user-guide/basics/fr3-basics.md
+          - FR3 Start-up Checklist: user-guide/checklist/fr3-start-up-checklist.md
           - FR3 Example Capabilities:
               - Summary: user-guide/fr3-example-capabilities/summary.md
               - libfranka Examples: user-guide/fr3-example-capabilities/libfranka-examples.md
               - Kinesthetic Teaching: user-guide/fr3-example-capabilities/kinesthetic-teaching.md
               - Visual Servoing: user-guide/fr3-example-capabilities/visual-servoing.md
-          - FR3 Non-Remote Control: user-guide/non-remote-control.md
-          - FR3 Remote Control: user-guide/remote-control.md
+          - FR3 Non-Remote Control: user-guide/control/fr3-non-remote-control.md
+          - FR3 Remote Control: user-guide/control/fr3-remote-control.md
   - Appendix:
       - Sections:
-          - Branch Strategy and Release Notes: appendix/branch-strategy-and-release-notes.md
           - Glossary: appendix/glossary.md
