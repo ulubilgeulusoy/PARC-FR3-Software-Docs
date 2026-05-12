@@ -17,13 +17,10 @@ nav:
   - Home: index.md
   - Getting Started:
       - Sections:
-          - Overview: getting-started/overview.md
-          - Repository Map: getting-started/repository-map.md
           - Quick Start: getting-started/quick-start.md
-          - ROS2 ViSP libfranka 101: getting-started/architecture/ros2-visp-libfranka-101.md
-          - System Data Flow: getting-started/architecture/system-data-flow.md
-          - ROS2 vs LSL: getting-started/architecture/ros2-vs-lsl.md
-          - Safety and Operating Notes: getting-started/safety-and-operating-notes.md
+          - PARC FR3 Capabilitites: getting-started/parc-fr3-capabilities.md
+          - Capability Basics: getting-started/capability-basics.md
+          - Safety: getting-started/safety.md
   - FR3 Control System Installation Guide:
       - Sections:
           - Summary: installation-guide/summary.md
@@ -32,23 +29,14 @@ nav:
           - Lessons Learned: installation-guide/lessons-learned.md
   - FR3 User Guide:
       - Sections:
-          - FR3 User Guide Summary: user-guide/summary/fr3-user-guide-summary.md
-          - Workspaces:
-              - Franka Workspace Guide: user-guide/workspaces/franka-workspace-guide.md
-              - Baseline vs Jointfailsafe: user-guide/workspaces/baseline-vs-jointfailsafe.md
-              - Build Source Runtime Rules: user-guide/workspaces/build-source-runtime-rules.md
-          - Repositories:
-              - franka_kinesthetic_teaching_GUI: user-guide/repositories/franka-kinesthetic-teaching-gui.md
-              - FR3_control_GUI: user-guide/repositories/fr3-control-gui.md
-              - FR3_visual_servo_examples: user-guide/repositories/fr3-visual-servo-examples.md
-              - franka_ws_jointfailsafe: user-guide/repositories/franka-ws-jointfailsafe.md
-              - Investment-HRI-Experiment-Task-GUIs: user-guide/repositories/investment-hri-experiment-task-guis.md
-              - Event_marker_LSL_GUI: user-guide/repositories/event-marker-lsl-gui.md
-          - Operations:
-              - Standard Workflows: user-guide/operations/standard-workflows.md
-              - Troubleshooting: user-guide/operations/troubleshooting.md
-              - Known Limitations: user-guide/operations/known-limitations.md
-          - API References:
-              - Overview: user-guide/api-references/overview.md
-              - C++ Doxygen Links: user-guide/api-references/cpp-doxygen-links.md
-              - Python API Plan: user-guide/api-references/python-api-plan.md
+          - Summary: user-guide/summary/fr3-user-guide-summary.md
+          - Read Before Proceed: user-guide/read-before-proceed.md
+          - Computers: user-guide/computers.md
+          - FR3 Basics: user-guide/fr3-basics.md
+          - FR3 Start-up Checklist: user-guide/start-up-checklist.md
+          - FR3 Example Capabilities: user-guide/fr3-capabilities.md
+          - FR3 Remote Control: user-guide/remote-control.md
+  - Appendix:
+      - Sections:
+          - Branch Strategy and Release Notes: appendix/branch-strategy-and-release-notes.md
+          - Glossary: appendix/glossary.md

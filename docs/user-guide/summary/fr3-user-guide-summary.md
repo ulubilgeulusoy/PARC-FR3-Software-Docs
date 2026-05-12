@@ -2,6 +2,8 @@
 
 This page summarizes the internal **Franka Research 3 (FR3) Robot Arm User Guide** and captures the practical operating context for our lab workflows.
 
+The specific use case for the Franka Research 3 (FR3) robot arm may vary for each user. This document provides essential background on operating the FR3 arm, along with several illustrative use cases. Please note that the information contained herein is for informational purposes only, and users are responsible for developing relevant safety and operational procedures when using the robot arm.
+
 ## Internal document access
 
 The original slide deck is an internal document for **CU Boulder Bioastronautics students, faculty, and staff**:

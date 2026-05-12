@@ -1,0 +1,281 @@
+ROS 2 and ViSP 101
+A practical mini-class based on our conversation, framed around FR3 control, visual servoing, libfranka, GUIs, safety, and experiment data streams.
+Big-Picture Difference
+The simplest distinction is:
+ROS 2 = communication framework for robotics systems
+ViSP = computer vision and visual servoing library
+ROS 2 helps different robot software components communicate. ViSP helps process visual information and compute visual-servoing commands. libfranka is the interface that actually talks to the Franka robot.
+Camera/image data
+    ↓
+ViSP computes visual servoing command
+    ↓
+libfranka sends motion command
+    ↓
+FR3 moves
+Part 1: ROS 2 101
+ROS 2, or Robot Operating System 2, is not an operating system like Ubuntu or Windows. It is a robotics software framework that helps separate programs communicate with each other.
+Camera node
+Robot control node
+GUI node
+Safety monitoring node
+Data recording node
+Nodes
+A node is one running program that does one specific job. A good ROS 2 system is usually made of many small nodes instead of one giant program.
+/hand_tracker_node       detects hand position
+/fr3_motion_node         moves the robot
+/safety_node             checks speed, distance, emergency stop
+/gui_node                lets the user start/stop modes
+/lsl_bridge_node         sends robot state to LSL
+Topics
+A topic is used when one node continuously sends data and another node listens to it. This is called publish/subscribe communication.
+/hand_tracker_node publishes to /hand_position
+/fr3_motion_node subscribes to /hand_position
+Use topics for camera frames, joint angles, robot pose, sensor values, mode status, or button states.
+Topics are best for repeated or streaming data.
+A node can publish to a topic without knowing exactly which nodes are listening.
+ros2 topic list
+ros2 topic echo /topic_name
+ros2 topic info /topic_name
+ros2 topic type /topic_name
+Messages
+A message defines the data format carried by a topic. For example, a joint-state topic may use sensor_msgs/msg/JointState, while a simple text topic may use std_msgs/msg/String.
+sensor_msgs/msg/JointState
+  name
+  position
+  velocity
+  effort
+Services
+A service is used when one node asks another node to do something and waits for a response. It is a one-request, one-response pattern.
+/gui_node calls /start_kinesthetic_teaching
+/fr3_control_node responds: success = true
+Use services for start/stop commands, reset commands, opening or closing a gripper, or checking status once.
+Services are not ideal for continuous high-rate data streams.
+ros2 service list
+ros2 service type /service_name
+ros2 service call /enable_mode std_srvs/srv/SetBool "{data: true}"
+Actions
+An action is used for a task that takes time and may need progress feedback. Actions include a goal, feedback, and a result.
+Goal: move to this pose
+Feedback: currently 40% complete
+Result: reached target successfully
+Use actions for long-running tasks such as moving through a trajectory.
+Actions are better than services when the task has progress and may take time.
+Parameters
+A parameter is a configurable value associated with a node. Parameters let you tune behavior without changing source code.
+robot_ip = 172.16.0.2
+max_speed = 0.2
+camera_id = 0
+participant_id = P001
+enable_safety_stop = true
+ros2 param list
+ros2 param get /node_name parameter_name
+ros2 param set /fr3_motion_node max_speed 0.1
+Launch Files
+A launch file starts multiple ROS 2 nodes together. Instead of opening many terminals, you can start the full system with one command.
+ros2 launch fr3_experiment_bringup investment_hri.launch.py
+Launch files are useful for starting the FR3 control node, visual servoing node, GUI, LSL bridge, and safety monitor together.
+They help make the experiment startup process repeatable.
+Packages and Workspaces
+A package is a folder containing ROS 2 code. A workspace is the main folder where multiple packages are built together.
+ros2_ws/
+├── src/
+│   ├── fr3_control/
+│   ├── fr3_visual_servo/
+│   └── ros2_lsl_bridge/
+├── build/
+├── install/
+└── log/
+source /opt/ros/humble/setup.bash
+cd ~/ros2_ws
+colcon build
+source install/setup.bash
+ROS Graph
+The ROS graph is the network of active nodes, topics, services, and actions. It tells you what is running and how the system is connected.
+ros2 node list
+ros2 topic list
+ros2 service list
+ros2 action list
+rqt_graph
+When to Use Topic, Service, Action, Parameter, or Launch File
+Data stream? Use topic.
+Quick request/response? Use service.
+Long-running task? Use action.
+Configuration? Use parameter.
+Whole system startup? Use launch file.
+ROS 2 and LSL in the Experiment Context
+ROS 2 and LSL serve different roles. ROS 2 is usually better for robot-system communication and control coordination. LSL is usually better for synchronized experiment data collection and offline analysis.
+/fr3_state topic in ROS 2
+        ↓
+ros2_to_lsl_bridge node
+        ↓
+LSL stream: robot_state
+        ↓
+LabRecorder .xdf file
+Part 2: ViSP 101
+ViSP stands for Visual Servoing Platform. It is a C++ library for visual tracking, calibration, pose estimation, and visual servoing. It is not a communication framework like ROS 2.
+Camera sees object
+        ↓
+ViSP detects/tracks visual features
+        ↓
+ViSP computes visual error
+        ↓
+ViSP computes robot velocity command
+        ↓
+Robot moves to reduce the visual error
+ViSP vs ROS 2
+ROS 2 connects the system.
+ViSP computes the visual servoing behavior.
+Visual Servoing
+Visual servoing means using visual feedback from a camera to control robot motion. Instead of commanding a fixed motion, the robot moves until the image looks the way you want it to look.
+1. Get image from camera
+2. Extract visual features
+3. Compare current features to desired features
+4. Compute error
+5. Convert error into robot velocity
+6. Send velocity command to robot
+7. Repeat
+Current Features vs Desired Features
+A central ViSP idea is to compare what the camera sees now with what you want the camera to see.
+Current object center in image: x = 420, y = 260
+Desired object center in image: x = 320, y = 240
+Error: object is too far right and slightly low
+Command: move robot/camera to reduce that error
+Visual Features
+A visual feature is something measurable in the image.
+Point location
+Line
+Circle or ellipse
+Object contour
+AprilTag corner
+Object pose
+Image moments
+Target center
+current feature: s
+desired feature: s*
+error: e = s - s*
+Eye-in-Hand vs Eye-to-Hand
+This distinction matters because the coordinate transformations and control formulation are different.
+IBVS vs PBVS
+IBVS mental model: control the robot using image coordinates.
+PBVS mental model: control the robot using estimated 3D pose.
+What ViSP Computes
+ViSP often computes a velocity command from a visual error. The output may be a camera or end-effector velocity vector.
+visual error → control law → camera/robot velocity
+
+vx, vy, vz = linear velocity
+wx, wy, wz = angular velocity
+For the FR3, another layer such as libfranka still needs to send that command safely to the robot.
+Interaction Matrix and Control Gain
+The interaction matrix describes how camera or robot motion changes the visual features in the image. This is the mathematical bridge between image error and robot motion.
+If I move the camera this way, how will the image features move?
+Visual servoing also usually has a gain, often called lambda. Higher gain gives more aggressive motion, while lower gain gives slower and smoother motion.
+Calibration and Coordinate Frames
+Calibration is critical for visual servoing. Camera calibration estimates the camera intrinsic parameters. Hand-eye calibration estimates the transform between the robot end effector and the camera.
+Common frames:
+camera frame
+robot base frame
+end-effector frame
+object frame
+desired camera frame
+current camera frame
+A common bug is computing velocity in one frame and sending it to the robot as if it were in another frame.
+What frame is ViSP computing velocity in?
+What frame does libfranka expect?
+What transform converts between them?
+ViSP, OpenCV, ROS 2, and libfranka
+OpenCV gets image from camera
+ViSP tracks features and computes control law
+libfranka sends velocity command to FR3
+ViSP and libfranka in FR3 Visual Servoing
+Camera image
+    ↓
+ViSP tracking/control
+    ↓
+Velocity command
+    ↓
+Frame conversion / safety checks
+    ↓
+libfranka control loop
+    ↓
+FR3 motion
+ViSP decides what motion is needed. libfranka sends that motion to the robot.
+ViSP Display Issues
+If a ViSP program tries to open a display window while running over SSH, you may see an error such as:
+vpDisplayException: Can't connect display on server
+This usually means the program wants to show an image window, but the display server is not available. X11 forwarding, such as ssh -Y, can help when you need the remote GUI to appear on your laptop.
+Part 3: Why ViSP Is Not Automatically a ROS 2 Node
+The key detail is that ViSP is a library, while a ROS 2 node is a running program structure.
+OpenCV is not a ROS 2 node.
+But you can write a ROS 2 camera-processing node that uses OpenCV.
+
+ViSP is not a ROS 2 node.
+But you can write a ROS 2 visual-servoing node that uses ViSP.
+A ROS 2 Node Can Use ViSP Internally
+/visp_visual_servo_node
+    uses ViSP internally
+    subscribes to camera/image data
+    computes visual servoing velocity
+    publishes robot command
+
+/fr3_controller_node
+    uses libfranka internally
+    subscribes to robot command
+    sends command to FR3
+Option 1: Direct ViSP plus libfranka Program
+This is likely close to your current visual servoing example: one C++ program gets the image, uses ViSP, computes the command, uses libfranka, and moves the robot.
+Camera → ViSP → libfranka → FR3
+Option 2: ROS 2 Node Structure
+You could organize the same capability as a ROS 2 system.
+/camera_node
+    publishes camera images
+
+/visp_visual_servo_node
+    subscribes to camera images
+    uses ViSP internally
+    publishes desired velocity
+
+/safety_filter_node
+    checks limits, tracking status, mode, and timeout
+
+/fr3_libfranka_controller_node
+    subscribes to safe velocity command
+    uses libfranka internally
+    commands the FR3
+The Key Issue: Robot Control Timing
+The biggest reason people sometimes avoid putting the low-level control loop fully into ROS 2 is timing. For robot velocity control, you need to know what happens if a message is delayed, a node crashes, or image processing slows down.
+camera node → ROS 2 topic → ViSP node → ROS 2 topic → controller node
+This can work, but the system needs timeout and safety logic.
+if command is older than 100 ms:
+    stop robot
+
+if target tracking is lost:
+    command zero velocity
+
+if GUI stop button is pressed:
+    immediately stop visual servoing
+Recommended Architecture for Your FR3/HRI Context
+For your setup, the cleanest mental model is not ViSP versus ROS 2. It is ViSP inside a ROS 2 system.
+ROS 2 node 1: camera/image source
+ROS 2 node 2: ViSP visual servoing computation
+ROS 2 node 3: safety limiter
+ROS 2 node 4: FR3/libfranka command interface
+ROS 2 node 5: GUI mode controller
+ROS 2 node 6: robot state publisher
+ROS 2 node 7: LSL bridge
+For the actual robot command loop, the libfranka control node should be designed carefully so delayed or bad messages never create unsafe robot motion.
+/visp_visual_servo_node
+    computes desired velocity
+
+/safety_filter_node
+    checks limits, tracking status, mode, timeout
+
+/fr3_control_node
+    uses libfranka
+    accepts only safe, recent commands
+    sends zero velocity if commands stop
+Final Summary
+ROS 2 organizes and connects the robot software system.
+ViSP performs vision-based tracking and control inside that system.
+libfranka communicates directly with the Franka robot.
+LSL records synchronized experiment data.
+So, ViSP is not a ROS 2 node by itself because it is a library. However, you can absolutely create a ROS 2 node that uses ViSP internally and connects to a libfranka-based FR3 control node.

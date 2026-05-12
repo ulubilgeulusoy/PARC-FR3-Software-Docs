@@ -4,6 +4,12 @@ This page summarizes the internal **Franka Research 3 (FR3) Robot Arm Installati
 
 Information provided here are background information on the installation of the FR3 control system on the PARC desktop computer on March 30, 2026. **It is important to note that this is not intended to serve as a step-by-step installation guide**; rather, it primarily functions as a lessons learned document for future setups of FR3 controls on different systems.
 
+This section is organized as follows:
+
+- **Before Installation** explains the compatibility checks (firmware, Ubuntu, RT kernel, ROS, and `libfranka`) to complete before setup.
+- **Recommended Installation Steps** provides a high-level sequence for installing and validating an FR3 control workstation.
+- **Lessons Learned** summarizes common failure points and practical fixes from prior installation attempts.
+
 ## Internal document access
 
 The original slide deck is an internal document for **CU Boulder Bioastronautics students, faculty, and staff**:
