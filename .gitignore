@@ -7,3 +7,7 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+*.txt
+*.log
+*.bak
+*.swp
