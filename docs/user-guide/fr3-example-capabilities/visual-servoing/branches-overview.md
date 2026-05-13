@@ -3,83 +3,29 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/branches>
 
-Last updated: 2026-05-13 21:36 UTC
+Last updated: 2026-05-13 22:11 UTC
 
 ## Live Branches
 
-- `CHRPS` -> `f5d5c34`
-- `combined_modes` -> `790df0e`
-- `main` -> `dc10491`
-- `new_GUI_test` -> `ed3b548`
-- `visual_servoing_node` -> `a4d4b70`
+- `main` -> `eadbd35`
+- `new_GUI_test` -> `eadbd35`
+- `visp_gui_combined` -> `53b09bf`
 
 ## README Summaries
-
-### `CHRPS`
-
-- Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/CHRPS>
-- README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/CHRPS/README.md>
-- Head commit: `f5d5c34`
-
-**Purpose**
-- # FR3 Visual Servo Examples
-
-**Validated Environment**
-- Not specified in this branch README.
-
-**Workspace Context**
-- Workspace Type: custom
-- Workspace Name: shows
-- Detection Confidence: medium
-
-**Main Workflows**
-- Not specified in this branch README.
-
-**How To Run**
-- Not specified in this branch README.
-
-**Known Caveats**
-- Not specified in this branch README.
-
-
-### `combined_modes`
-
-- Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/combined_modes>
-- README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/combined_modes/README.md>
-- Head commit: `790df0e`
-
-**Purpose**
-- # FR3 Visual Servo Examples
-
-**Validated Environment**
-- Not specified in this branch README.
-
-**Workspace Context**
-- Workspace Type: custom
-- Workspace Name: shows
-- Detection Confidence: medium
-
-**Main Workflows**
-- Not specified in this branch README.
-
-**How To Run**
-- Not specified in this branch README.
-
-**Known Caveats**
-- Not specified in this branch README.
-
 
 ### `main`
 
 - Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/main>
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/main/README.md>
-- Head commit: `dc10491`
+- Head commit: `eadbd35`
 
 **Purpose**
 - # FR3 Visual Servo Examples
 
 **Validated Environment**
-- Not specified in this branch README.
+- FR3 reachable over the network and ready for velocity control
+- libfranka
+- ViSP built with Franka, RealSense2, and pugixml support
 
 **Workspace Context**
 - Workspace Type: unknown
@@ -100,13 +46,13 @@ Last updated: 2026-05-13 21:36 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/new_GUI_test>
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/new_GUI_test/README.md>
-- Head commit: `ed3b548`
+- Head commit: `eadbd35`
 
 **Purpose**
 - # FR3 Visual Servo Examples
 
 **Validated Environment**
-- FR3 reachable over the network
+- FR3 reachable over the network and ready for velocity control
 - libfranka
 - ViSP built with Franka, RealSense2, and pugixml support
 
@@ -125,21 +71,24 @@ Last updated: 2026-05-13 21:36 UTC
 - Not specified in this branch README.
 
 
-### `visual_servoing_node`
+### `visp_gui_combined`
 
-- Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/visual_servoing_node>
-- README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/visual_servoing_node/README.md>
-- Head commit: `a4d4b70`
+- Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/visp_gui_combined>
+- README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/visp_gui_combined/README.md>
+- Head commit: `53b09bf`
 
 **Purpose**
 - # FR3 Visual Servo Examples
+- adjustable AprilTag size and desired standoff distance
 
 **Validated Environment**
-- Not specified in this branch README.
+- FR3 reachable on the network and ready for velocity control
+- libfranka
+- ViSP built with Franka and RealSense support
 
 **Workspace Context**
-- Workspace Type: mixed
-- Workspace Name: follows, shows
+- Workspace Type: unknown
+- Workspace Name: unknown
 - Detection Confidence: low
 
 **Main Workflows**
