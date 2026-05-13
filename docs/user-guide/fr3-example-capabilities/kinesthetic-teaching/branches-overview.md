@@ -3,7 +3,7 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/branches>
 
-Last updated: 2026-05-13 19:42 UTC
+Last updated: 2026-05-13 19:55 UTC
 
 ## Live Branches
 
@@ -17,21 +17,129 @@ Last updated: 2026-05-13 19:42 UTC
 ### `Humble_KT`
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Humble_KT>
-- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow. - OS: Ubuntu 22.04 LTS - ROS distro: ROS 2 Humble - Python: Python 3 - Robot: Franka Research 3...
+- README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/Humble_KT/README.md>
+- Head commit: `cb958d2`
+
+**Purpose**
+- This repo contains one main application: a GUI that manages two workflows
+- teach a motion by moving the robot by hand while joint states are recorded to CSV
+- replay a recorded trajectory through the FR3 joint trajectory controller
+
+**Validated Environment**
+- This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow.
+- OS: Ubuntu 22.04 LTS
+- ROS distro: ROS 2 Humble
+
+**Main Workflows**
+- ### Teach mode
+- Start Teach (Record) is the full recording workflow, not just a gravity-compensation shortcut
+- If the reduced teach stack is not already running, Start Teach (Record) launches it first
+
+**How To Run**
+- ### GUI User Guide
+- Start Teach (Record) begins the teaching workflow.
+- It first prompts for an optional CSV filename. If you leave it blank, the GUI creates a timestamped filename.
+
+**Known Caveats**
+- The playback script expects FR3 joint names fr3_joint1 through fr3_joint7
+- The GUI uses fixed startup delays in a few places, so slow systems may still need more time
+- The run flow currently waits a fixed 3 seconds after starting MoveIt before launching playback, then relies on runtime readiness checks inside the playback node
+
 
 ### `Humble_KT_failsafe`
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Humble_KT_failsafe>
-- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow. - OS: Ubuntu 22.04 LTS - ROS distro: ROS 2 Humble - Python: Python 3 - Robot: Franka Research 3...
+- README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/Humble_KT_failsafe/README.md>
+- Head commit: `75f8f70`
+
+**Purpose**
+- This repo contains one main application: a GUI that manages two workflows
+- teach a motion by moving the robot by hand while joint states are recorded to CSV
+- replay a recorded trajectory through the FR3 joint trajectory controller
+
+**Validated Environment**
+- This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow.
+- OS: Ubuntu 22.04 LTS
+- ROS distro: ROS 2 Humble
+
+**Main Workflows**
+- ### Teach mode
+- Start Teach (Record) is the full recording workflow, not just a gravity-compensation shortcut
+- If the reduced teach stack is not already running, Start Teach (Record) arms the recorder first and only then enables gravity compensation
+
+**How To Run**
+- ### GUI User Guide
+- Start Teach (Record) begins the teaching workflow.
+- It first prompts for an optional CSV filename. If you leave it blank, the GUI creates a timestamped filename.
+
+**Known Caveats**
+- The playback script expects FR3 joint names fr3_joint1 through fr3_joint7
+- The GUI still depends on ROS 2 / DDS / controller startup health; if the playback controller fails to load, the readiness gate will keep Run Trajectory from starting instead of forcing playback anyway
+- CSV files are saved into the repo directory by default unless you provide another path
+
 
 ### `Jazzy_KT`
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Jazzy_KT>
-- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow. - OS: Ubuntu 24.04 LTS - ROS distro: ROS 2 Jazzy - Python: Python 3 - Robot: Franka Research 3 (FR3)...
+- README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/Jazzy_KT/README.md>
+- Head commit: `a7ed711`
+
+**Purpose**
+- This repo contains one main application: a GUI that manages two workflows
+- teach a motion by moving the robot by hand while joint states are recorded to CSV
+- replay a recorded trajectory through the FR3 joint trajectory controller
+
+**Validated Environment**
+- This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow.
+- OS: Ubuntu 24.04 LTS
+- ROS distro: ROS 2 Jazzy
+
+**Main Workflows**
+- ### Teach mode
+- Starts the minimal teach bringup automatically if it is not already running
+- Records joint motion while the arm is moved by hand
+
+**How To Run**
+- ### Record a trajectory
+- Optionally click Start Gravity Mode if you want gravity compensation without recording yet.
+- Click Start Teach (Record).
+
+**Known Caveats**
+- The recorder now prefers /NS_1/franka/joint_states so it records the real robot state instead of accidentally latching onto startup/default publisher values
+- The GUI now delays gravity-compensation unlock during teach until the recorder is ready, so early user motion does not get lost before recording is active
+- The playback script expects FR3 joint names fr3_joint1 through fr3_joint7
+
 
 ### `main`
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/main>
-- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow. - OS: Ubuntu 24.04 LTS - ROS distro: ROS 2 Jazzy - Python: Python 3 - Robot: Franka Research 3 (FR3)...
+- README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/main/README.md>
+- Head commit: `a7ed711`
+
+**Purpose**
+- This repo contains one main application: a GUI that manages two workflows
+- teach a motion by moving the robot by hand while joint states are recorded to CSV
+- replay a recorded trajectory through the FR3 joint trajectory controller
+
+**Validated Environment**
+- This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow.
+- OS: Ubuntu 24.04 LTS
+- ROS distro: ROS 2 Jazzy
+
+**Main Workflows**
+- ### Teach mode
+- Starts the minimal teach bringup automatically if it is not already running
+- Records joint motion while the arm is moved by hand
+
+**How To Run**
+- ### Record a trajectory
+- Optionally click Start Gravity Mode if you want gravity compensation without recording yet.
+- Click Start Teach (Record).
+
+**Known Caveats**
+- The recorder now prefers /NS_1/franka/joint_states so it records the real robot state instead of accidentally latching onto startup/default publisher values
+- The GUI now delays gravity-compensation unlock during teach until the recorder is ready, so early user motion does not get lost before recording is active
+- The playback script expects FR3 joint names fr3_joint1 through fr3_joint7
+
 
 Note: this page is generated automatically in CI from live branch data and per-branch README content.
