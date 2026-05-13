@@ -21,7 +21,7 @@ nav:
   - Getting Started:
       - Sections:
           - Quick Start: getting-started/quick-start.md
-          - PARC FR3 Capabilitites: getting-started/parc-fr3-capabilities.md
+          - PARC FR3 Capabilities: getting-started/parc-fr3-capabilities.md
           - Capability Basics: getting-started/capability-basics.md
           - Safety: getting-started/safety.md
   - FR3 Control System Installation Guide:
