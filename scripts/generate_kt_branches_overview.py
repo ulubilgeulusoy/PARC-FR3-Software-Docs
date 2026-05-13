@@ -110,6 +110,31 @@ def get_first_available(sections: Dict[str, List[str]], candidates: List[str]) -
     return []
 
 
+def infer_workspace_context(readme_text: str, sections: Dict[str, List[str]], branch_name: str) -> List[str]:
+    explicit = get_first_available(
+        sections,
+        ["workspace context", "workspace", "configuration", "validated environment", "important notes"],
+    )
+    inferred = []
+    lower = readme_text.lower()
+    b_lower = branch_name.lower()
+
+    if "failsafe" in lower or "failsafe" in b_lower:
+        inferred.append("Uses a failsafe/custom workspace variant; do not assume standard workspace defaults.")
+    if "franka_ws_jointfailsafe" in lower:
+        inferred.append("References `franka_ws_jointfailsafe` workflow or dependency.")
+    if "/home/parc/franka_ws/install/setup.bash" in readme_text:
+        inferred.append("Runtime setup sources `/home/parc/franka_ws/install/setup.bash`.")
+    if "run_gui.sh" in lower:
+        inferred.append("Entry point is `run_gui.sh`, which should source ROS/workspace setup before launch.")
+
+    points = explicit[:]
+    for p in inferred:
+        if p not in points:
+            points.append(p)
+    return points[:MAX_BULLETS]
+
+
 def build_markdown(branches: List[Dict]) -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     branches_sorted = sorted(branches, key=lambda b: b["name"].lower())
@@ -146,12 +171,14 @@ def build_markdown(branches: List[Dict]) -> str:
             if not purpose:
                 purpose = collect_points(sections.get("_intro", []), max_points=2)
             env = get_first_available(sections, ["validated environment", "requirements"])
+            workspace = infer_workspace_context(readme, sections, name)
             workflows = get_first_available(sections, ["features", "main application", "usage"])
             run_steps = get_first_available(sections, ["running", "usage"])
             caveats = get_first_available(sections, ["known assumptions and caveats", "important notes"])
         except Exception:
             purpose = []
             env = []
+            workspace = []
             workflows = []
             run_steps = []
             caveats = []
@@ -173,6 +200,7 @@ def build_markdown(branches: List[Dict]) -> str:
         lines.append("")
         lines.extend(section_or_fallback("Purpose", purpose))
         lines.extend(section_or_fallback("Validated Environment", env))
+        lines.extend(section_or_fallback("Workspace Context", workspace))
         lines.extend(section_or_fallback("Main Workflows", workflows))
         lines.extend(section_or_fallback("How To Run", run_steps))
         lines.extend(section_or_fallback("Known Caveats", caveats))
