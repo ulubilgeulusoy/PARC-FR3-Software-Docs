@@ -50,6 +50,12 @@ nav:
                   - Branches Overview: user-guide/fr3-example-capabilities/visual-servoing/branches-overview.md
           - FR3 Non-Remote Control: user-guide/control/fr3-non-remote-control.md
           - FR3 Remote Control: user-guide/control/fr3-remote-control.md
+  - HRI Experiments:
+      - Sections:
+          - Overview: hri-experiments/overview.md
+          - Example Tasks: hri-experiments/example-tasks.md
+          - Data Collection: hri-experiments/data-collection.md
+          - Data Analysis: hri-experiments/data-analysis.md
   - Appendix:
       - Sections:
           - Glossary: appendix/glossary.md
