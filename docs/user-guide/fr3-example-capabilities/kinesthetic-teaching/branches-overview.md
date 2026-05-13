@@ -3,7 +3,7 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/branches>
 
-Last updated: 2026-05-13 20:01 UTC
+Last updated: 2026-05-13 20:07 UTC
 
 ## Live Branches
 
@@ -31,9 +31,9 @@ Last updated: 2026-05-13 20:01 UTC
 - ROS distro: ROS 2 Humble
 
 **Workspace Context**
-- Main user-editable settings live in franka_teach_run_gui_v2.py
-- ROS_SETUP
-- ROBOT_IP
+- Workspace Type: mixed
+- Workspace Name: workflows, rows, Shows
+- Detection Confidence: low
 
 **Main Workflows**
 - ### Teach mode
@@ -68,9 +68,9 @@ Last updated: 2026-05-13 20:01 UTC
 - ROS distro: ROS 2 Humble
 
 **Workspace Context**
-- Main user-editable settings live in franka_teach_run_gui_v2.py
-- ROS_SETUP
-- ROBOT_IP
+- Workspace Type: custom
+- Workspace Name: franka_ws_jointfailsafe
+- Detection Confidence: high
 
 **Main Workflows**
 - ### Teach mode
@@ -105,9 +105,9 @@ Last updated: 2026-05-13 20:01 UTC
 - ROS distro: ROS 2 Jazzy
 
 **Workspace Context**
-- Main user-editable settings live in franka_teach_run_gui_v2.py
-- ROS_SETUP
-- ROBOT_IP
+- Workspace Type: standard
+- Workspace Name: franka_ws
+- Detection Confidence: high
 
 **Main Workflows**
 - ### Teach mode
@@ -142,9 +142,9 @@ Last updated: 2026-05-13 20:01 UTC
 - ROS distro: ROS 2 Jazzy
 
 **Workspace Context**
-- Main user-editable settings live in franka_teach_run_gui_v2.py
-- ROS_SETUP
-- ROBOT_IP
+- Workspace Type: standard
+- Workspace Name: franka_ws
+- Detection Confidence: high
 
 **Main Workflows**
 - ### Teach mode
