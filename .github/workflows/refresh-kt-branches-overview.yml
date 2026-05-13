@@ -33,18 +33,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install mkdocs mkdocs-material
 
-      - name: Generate Branches Overview
-        run: python scripts/generate_kt_branches_overview.py
+      - name: Generate Branches Overviews
+        run: |
+          python scripts/generate_kt_branches_overview.py
+          python scripts/generate_vs_branches_overview.py
 
       - name: Commit generated content if needed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/user-guide/fr3-example-capabilities/kinesthetic-teaching/branches-overview.md
+          git add docs/user-guide/fr3-example-capabilities/visual-servoing/branches-overview.md
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "docs: refresh kinesthetic branches overview"
+            git commit -m "docs: refresh branch overviews"
             git push
           fi
 

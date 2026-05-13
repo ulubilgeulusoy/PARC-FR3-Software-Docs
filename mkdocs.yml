@@ -44,7 +44,10 @@ nav:
                   - Overview: user-guide/fr3-example-capabilities/kinesthetic-teaching.md
                   - Quick Try: user-guide/fr3-example-capabilities/kinesthetic-teaching/quick-try.md
                   - Branches Overview: user-guide/fr3-example-capabilities/kinesthetic-teaching/branches-overview.md
-              - Visual Servoing: user-guide/fr3-example-capabilities/visual-servoing.md
+              - Visual Servoing:
+                  - Overview: user-guide/fr3-example-capabilities/visual-servoing.md
+                  - Quick Try: user-guide/fr3-example-capabilities/visual-servoing/quick-try.md
+                  - Branches Overview: user-guide/fr3-example-capabilities/visual-servoing/branches-overview.md
           - FR3 Non-Remote Control: user-guide/control/fr3-non-remote-control.md
           - FR3 Remote Control: user-guide/control/fr3-remote-control.md
   - Appendix:
