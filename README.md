@@ -4,8 +4,6 @@ This repo contains the source files for the PARC Franka Research 3 (FR3) Robot A
 The site is built using MkDocs + Material.
 The live site is available at: https://ulubilgeulusoy.github.io/PARC-FR3-Software-Docs/
 
-Central documentation repository for PARC FR3 software operation, setup history, and user workflows.
-
 This site is built with MkDocs + Material and is intended to help lab users:
 - Understand FR3 capabilities and safety basics
 - Run FR3 workflows (remote and non-remote control)
@@ -39,9 +37,16 @@ Top-level sections in the current navigation:
   - FR3 Basics
   - FR3 Start-up Checklist
   - FR3 Example Capabilities
+    - Summary
     - libfranka Examples
     - Kinesthetic Teaching
+      - Overview
+      - Quick Try
+      - Branches Overview (auto-generated)
     - Visual Servoing
+      - Overview
+      - Quick Try
+      - Branches Overview (auto-generated)
   - FR3 Non-Remote Control
   - FR3 Remote Control
 - Appendix
@@ -54,8 +59,9 @@ Primary content lives in `docs/`, with site configuration in `mkdocs.yml`.
 - `docs/`: Markdown source pages and image assets
 - `docs/assets/`: Embedded images used by documentation pages
 - `mkdocs.yml`: Site configuration (theme, navigation, features)
-- `scripts/generate_kt_branches_overview.py`: Generates live Kinesthetic Teaching branch overview from GitHub branch/README data
-- `.github/workflows/refresh-kt-branches-overview.yml`: CI workflow that regenerates branch overview, builds docs, and deploys to GitHub Pages
+- `scripts/generate_kt_branches_overview.py`: Generates Kinesthetic Teaching branch overview from live branch/README data
+- `scripts/generate_vs_branches_overview.py`: Generates Visual Servoing branch overview from live branch/README data
+- `.github/workflows/refresh-kt-branches-overview.yml`: CI workflow that regenerates branch overviews, builds docs, and deploys to GitHub Pages
 - `site/`: Generated static output from `mkdocs build`
 
 ## Local Development
@@ -77,7 +83,7 @@ Deployment is fully CI-driven.
 - Publishing is handled by GitHub Actions workflow:
   - `.github/workflows/refresh-kt-branches-overview.yml`
 - On workflow runs, CI will:
-  1. Generate/update Kinesthetic Teaching Branches Overview from live branch data.
+  1. Generate/update Kinesthetic Teaching and Visual Servoing Branches Overview pages from live branch data.
   2. Commit generated markdown if content changed.
   3. Build the MkDocs site.
   4. Deploy to GitHub Pages.
@@ -108,14 +114,17 @@ This repository deploys through GitHub Actions workflow:
 When the workflow run shows green (success), the site is deployed to:
 - `https://ulubilgeulusoy.github.io/PARC-FR3-Software-Docs/`
 
-## Kinesthetic Teaching Branches Overview Automation
+## Branches Overview Automation
 
-The page:
+The pages:
 - `docs/user-guide/fr3-example-capabilities/kinesthetic-teaching/branches-overview.md`
+- `docs/user-guide/fr3-example-capabilities/visual-servoing/branches-overview.md`
 
 is auto-generated in CI from:
-- Live branch list in `ulubilgeulusoy/franka_kinesthetic_teaching_GUI`
-- Per-branch `README.md` summary text
+- Live branch lists in:
+  - `ulubilgeulusoy/franka_kinesthetic_teaching_GUI`
+  - `ulubilgeulusoy/FR3_visual_servo_examples`
+- Per-branch `README.md` summary text and extracted sections
 
 This keeps branch names and summaries current without manual editing.
 
