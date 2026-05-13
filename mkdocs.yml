@@ -6,6 +6,9 @@ repo_url: https://github.com/ulubilgeulusoy/PARC-FR3-Software-Docs
 
 theme:
   name: material
+  palette:
+    primary: black
+    accent: amber
   features:
     - navigation.sections
     - navigation.prune
