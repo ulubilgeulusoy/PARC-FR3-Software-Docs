@@ -15,6 +15,8 @@ REPO = "franka_kinesthetic_teaching_GUI"
 API_URL = f"https://api.github.com/repos/{OWNER}/{REPO}/branches?per_page=100"
 OUT_PATH = Path("docs/user-guide/fr3-example-capabilities/kinesthetic-teaching/branches-overview.md")
 RAW_README_URL = f"https://raw.githubusercontent.com/{OWNER}/{REPO}" + "/{branch}/README.md"
+MAX_BULLETS = 3
+MAX_BULLET_LEN = 220
 
 
 def fetch_branches() -> List[Dict]:
@@ -47,33 +49,65 @@ def fetch_readme(branch_name: str) -> str:
         return resp.read().decode("utf-8", errors="replace")
 
 
-def extract_summary(readme_text: str) -> str:
-    lines = [ln.strip() for ln in readme_text.splitlines()]
-    cleaned = []
-    for ln in lines:
-        if not ln:
+def parse_sections(readme_text: str) -> Dict[str, List[str]]:
+    sections = {}
+    current = "_intro"
+    sections[current] = []
+    for raw in readme_text.splitlines():
+        line = raw.rstrip()
+        if line.startswith("## "):
+            current = line[3:].strip().lower()
+            sections[current] = []
             continue
-        if ln.startswith("#"):
-            continue
-        if ln.startswith("```"):
-            continue
-        if ln.startswith("!"):
-            continue
-        cleaned.append(ln)
-    if not cleaned:
-        return "README present, but no summary text was detected."
+        sections.setdefault(current, []).append(line)
+    return sections
 
-    paragraph = []
-    for ln in cleaned:
-        if ln.startswith("## "):
-            break
-        paragraph.append(ln)
-        if len(" ".join(paragraph)) > 320:
-            break
 
-    text = " ".join(paragraph).strip()
-    text = re.sub(r"\s+", " ", text)
-    return text[:320].rstrip() + ("..." if len(text) > 320 else "")
+def clean_text(s: str) -> str:
+    s = s.strip()
+    s = re.sub(r"`([^`]*)`", r"\1", s)
+    s = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)
+    s = re.sub(r"<[^>]+>", "", s)
+    s = re.sub(r"\s+", " ", s)
+    return s.strip(" -:")
+
+
+def collect_points(lines: List[str], max_points: int = MAX_BULLETS) -> List[str]:
+    points = []
+    in_code = False
+    for raw in lines:
+        line = raw.strip()
+        if line.startswith("```"):
+            in_code = not in_code
+            continue
+        if in_code or not line:
+            continue
+        if line.startswith("!"):
+            continue
+        if line.startswith("- ") or line.startswith("* "):
+            point = clean_text(line[2:])
+            if point:
+                points.append(point[:MAX_BULLET_LEN])
+        elif re.match(r"^\d+\.\s+", line):
+            point = clean_text(re.sub(r"^\d+\.\s+", "", line))
+            if point:
+                points.append(point[:MAX_BULLET_LEN])
+        elif len(points) == 0:
+            point = clean_text(line)
+            if point:
+                points.append(point[:MAX_BULLET_LEN])
+        if len(points) >= max_points:
+            break
+    return points
+
+
+def get_first_available(sections: Dict[str, List[str]], candidates: List[str]) -> List[str]:
+    for key in candidates:
+        if key in sections:
+            pts = collect_points(sections[key])
+            if pts:
+                return pts
+    return []
 
 
 def build_markdown(branches: List[Dict]) -> str:
@@ -102,15 +136,46 @@ def build_markdown(branches: List[Dict]) -> str:
 
     for b in branches_sorted:
         name = b["name"]
+        sha = b["commit"]["sha"][:7]
         branch_url = f"https://github.com/{OWNER}/{REPO}/tree/{name}"
+        readme_url = f"https://github.com/{OWNER}/{REPO}/blob/{name}/README.md"
         try:
-            summary = extract_summary(fetch_readme(name))
+            readme = fetch_readme(name)
+            sections = parse_sections(readme)
+            purpose = get_first_available(sections, ["what this repo does"])
+            if not purpose:
+                purpose = collect_points(sections.get("_intro", []), max_points=2)
+            env = get_first_available(sections, ["validated environment", "requirements"])
+            workflows = get_first_available(sections, ["features", "main application", "usage"])
+            run_steps = get_first_available(sections, ["running", "usage"])
+            caveats = get_first_available(sections, ["known assumptions and caveats", "important notes"])
         except Exception:
-            summary = "README summary unavailable for this branch."
+            purpose = []
+            env = []
+            workflows = []
+            run_steps = []
+            caveats = []
+
+        def section_or_fallback(title: str, points: List[str]) -> List[str]:
+            out = [f"**{title}**"]
+            if points:
+                out.extend([f"- {p}" for p in points[:MAX_BULLETS]])
+            else:
+                out.append("- Not specified in this branch README.")
+            out.append("")
+            return out
+
         lines.append(f"### `{name}`")
         lines.append("")
         lines.append(f"- Branch URL: <{branch_url}>")
-        lines.append(f"- Summary: {summary}")
+        lines.append(f"- README: <{readme_url}>")
+        lines.append(f"- Head commit: `{sha}`")
+        lines.append("")
+        lines.extend(section_or_fallback("Purpose", purpose))
+        lines.extend(section_or_fallback("Validated Environment", env))
+        lines.extend(section_or_fallback("Main Workflows", workflows))
+        lines.extend(section_or_fallback("How To Run", run_steps))
+        lines.extend(section_or_fallback("Known Caveats", caveats))
         lines.append("")
 
     lines += [

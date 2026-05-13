@@ -85,6 +85,29 @@ Deployment is fully CI-driven.
 Recommended Pages setting:
 - Repository Settings -> Pages -> Source: **GitHub Actions**
 
+## Deployment Instructions
+
+This repository deploys through GitHub Actions workflow:
+- `Build and Deploy Docs (Auto Branch Overview)`
+
+### What triggers deployment
+
+- Push to `main` (for example, static docs/config updates)
+- Manual run from GitHub Actions (`workflow_dispatch`)
+- Weekly scheduled run (Monday cron)
+
+### How to manually deploy
+
+1. Open: `https://github.com/ulubilgeulusoy/PARC-FR3-Software-Docs`
+2. Click **Actions**
+3. Select workflow: **Build and Deploy Docs (Auto Branch Overview)**
+4. Click **Run workflow** (top-right)
+5. Select branch `main`
+6. Click **Run workflow** in the dropdown
+
+When the workflow run shows green (success), the site is deployed to:
+- `https://ulubilgeulusoy.github.io/PARC-FR3-Software-Docs/`
+
 ## Kinesthetic Teaching Branches Overview Automation
 
 The page:
