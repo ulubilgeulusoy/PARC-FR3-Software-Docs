@@ -8,7 +8,7 @@
   - This is a C++ application that uses the ViSP library.
   - Check the README section of this repository before trying the example.
 
-## To Try Visual Servoing
+### Check Before Continue
 
 - Make sure startup prerequisites are complete and the robot status light is green.
 - Make sure the E-stop is available and operational.
