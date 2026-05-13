@@ -3,7 +3,7 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/branches>
 
-Last updated: 2026-05-13 22:14 UTC
+Last updated: 2026-05-13 22:20 UTC
 
 ## Live Branches
 
@@ -11,7 +11,7 @@ Last updated: 2026-05-13 22:14 UTC
 - `new_GUI_test` -> `eadbd35`
 - `visp_gui_combined` -> `53b09bf`
 
-## README Summaries
+## Branch Summaries
 
 ### `main`
 
@@ -19,28 +19,39 @@ Last updated: 2026-05-13 22:14 UTC
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/main/README.md>
 - Head commit: `eadbd35`
 
-**Purpose**
-- # FR3 Visual Servo Examples
+**Branch Implementation Type**
+- mixed (Qt modular + single-file reference)
 
-**Validated Environment**
-- FR3 reachable over the network and ready for velocity control
-- libfranka
-- ViSP built with Franka, RealSense2, and pugixml support
+**Build Target and Path**
+- Target: `servoFrankaIBVS_combined`
+- Build command sample: `cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DViSP_DIR=$HOME/visp_install/lib/cmake/visp`
 
-**Workspace Context**
-- Workspace Type: unknown
-- Workspace Name: unknown
-- Detection Confidence: low
+**Run Entry Points**
+- Launcher script: `./run_visual_servo_combined.sh`
+- Direct binary: `./build/servoFrankaIBVS_combined \`
 
-**Main Workflows**
-- Not specified in this branch README.
+**Modes and Behavior**
+- Supports mode 1 (single-tag) and mode 2 (sequenced multi-tag).
 
-**How To Run**
-- Not specified in this branch README.
+**Calibration Dependency**
+- Required: yes
+- Requires a valid `--eMc` calibration file and camera calibration verification before motion.
 
-**Known Caveats**
-- Not specified in this branch README.
+**Safety Guard Coverage**
+- Safety guards: present
+- Treat as controller-side safeguards, not certified safety.
 
+**Workspace Model**
+- standalone CMake app
+
+**External Integration**
+- arm_moving state post
+
+**Branch Delta vs Main**
+- Same commit as `main` (no branch-level code delta at head).
+
+**Operational Readiness**
+- Ready for quick try (with calibration verified)
 
 ### `new_GUI_test`
 
@@ -48,28 +59,39 @@ Last updated: 2026-05-13 22:14 UTC
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/new_GUI_test/README.md>
 - Head commit: `eadbd35`
 
-**Purpose**
-- # FR3 Visual Servo Examples
+**Branch Implementation Type**
+- mixed (Qt modular + single-file reference)
 
-**Validated Environment**
-- FR3 reachable over the network and ready for velocity control
-- libfranka
-- ViSP built with Franka, RealSense2, and pugixml support
+**Build Target and Path**
+- Target: `servoFrankaIBVS_combined`
+- Build command sample: `cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DViSP_DIR=$HOME/visp_install/lib/cmake/visp`
 
-**Workspace Context**
-- Workspace Type: unknown
-- Workspace Name: unknown
-- Detection Confidence: low
+**Run Entry Points**
+- Launcher script: `./run_visual_servo_combined.sh`
+- Direct binary: `./build/servoFrankaIBVS_combined \`
 
-**Main Workflows**
-- Not specified in this branch README.
+**Modes and Behavior**
+- Supports mode 1 (single-tag) and mode 2 (sequenced multi-tag).
 
-**How To Run**
-- Not specified in this branch README.
+**Calibration Dependency**
+- Required: yes
+- Requires a valid `--eMc` calibration file and camera calibration verification before motion.
 
-**Known Caveats**
-- Not specified in this branch README.
+**Safety Guard Coverage**
+- Safety guards: present
+- Treat as controller-side safeguards, not certified safety.
 
+**Workspace Model**
+- standalone CMake app
+
+**External Integration**
+- arm_moving state post
+
+**Branch Delta vs Main**
+- Same commit as `main` (no branch-level code delta at head).
+
+**Operational Readiness**
+- Ready for quick try (with calibration verified)
 
 ### `visp_gui_combined`
 
@@ -77,28 +99,38 @@ Last updated: 2026-05-13 22:14 UTC
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/visp_gui_combined/README.md>
 - Head commit: `53b09bf`
 
-**Purpose**
-- # FR3 Visual Servo Examples
-- adjustable AprilTag size and desired standoff distance
+**Branch Implementation Type**
+- single-file combined ViSP app
 
-**Validated Environment**
-- FR3 reachable on the network and ready for velocity control
-- libfranka
-- ViSP built with Franka and RealSense support
+**Build Target and Path**
+- Target: `servoFrankaIBVS_combined`
+- Build command sample: `cmake .. -DCMAKE_BUILD_TYPE=Release -DViSP_DIR=~/visp_install/lib/cmake/visp`
 
-**Workspace Context**
-- Workspace Type: unknown
-- Workspace Name: unknown
-- Detection Confidence: low
+**Run Entry Points**
+- Launcher script: `./run_visual_servo_combined.sh`
+- Direct binary: `./build/servoFrankaIBVS_combined \`
 
-**Main Workflows**
-- Not specified in this branch README.
+**Modes and Behavior**
+- Supports mode 1 (single-tag) and mode 2 (sequenced multi-tag).
 
-**How To Run**
-- Not specified in this branch README.
+**Calibration Dependency**
+- Required: yes
+- Requires a valid `--eMc` calibration file and camera calibration verification before motion.
 
-**Known Caveats**
-- Not specified in this branch README.
+**Safety Guard Coverage**
+- Safety guards: present
+- Treat as controller-side safeguards, not certified safety.
 
+**Workspace Model**
+- standalone CMake app
 
-Note: this page is generated automatically in CI from live branch data and per-branch README content.
+**External Integration**
+- arm_moving state post
+
+**Branch Delta vs Main**
+- Different commit from `main` (branch-specific implementation/version).
+
+**Operational Readiness**
+- Ready for quick try (with calibration verified)
+
+Note: generated automatically in CI from live branch data and branch README content.
