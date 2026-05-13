@@ -1,30 +1,37 @@
 # Branches Overview
 
-This section summarizes the Kinesthetic Teaching branch layout in:
-<https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI>
+This page is auto-generated from the live GitHub branch list:
+<https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/branches>
 
-## Current branch heads
+Last updated: 2026-05-13 19:32 UTC
 
-- `main` -> `a7ed711` (same head as `Jazzy_KT`)
-- `Jazzy_KT` -> `a7ed711`
+## Live Branches
+
 - `Humble_KT` -> `cb958d2`
 - `Humble_KT_failsafe` -> `75f8f70`
+- `Jazzy_KT` -> `a7ed711`
+- `main` -> `a7ed711`
 
-## Summary
+## README Summaries
 
-- `main`:
-  - Current default line.
-  - Matches `Jazzy_KT` at the same commit head.
-  - Aligned with the repo README statement that the validated environment is Ubuntu 24.04 + ROS 2 Jazzy.
-- `Jazzy_KT`:
-  - Explicit Jazzy-focused branch for kinesthetic teaching workflows.
-  - Currently identical to `main` (same commit head).
-- `Humble_KT`:
-  - Humble-era branch line kept separately from the current Jazzy line.
-- `Humble_KT_failsafe`:
-  - Humble branch variant intended for failsafe-related workflow/version handling.
+### `Humble_KT`
 
-## Practical guidance
+- Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Humble_KT>
+- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow. - OS: Ubuntu 22.04 LTS - ROS distro: ROS 2 Humble - Python: Python 3 - Robot: Franka Research 3...
 
-- For current setup on PARC Desktop (Computer 1), use the Jazzy line (`main` / `Jazzy_KT`) unless your environment explicitly requires Humble compatibility.
-- Use `Humble_KT` or `Humble_KT_failsafe` only when you are operating in a Humble-based stack and need that branch history.
+### `Humble_KT_failsafe`
+
+- Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Humble_KT_failsafe>
+- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow. - OS: Ubuntu 22.04 LTS - ROS distro: ROS 2 Humble - Python: Python 3 - Robot: Franka Research 3...
+
+### `Jazzy_KT`
+
+- Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Jazzy_KT>
+- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow. - OS: Ubuntu 24.04 LTS - ROS distro: ROS 2 Jazzy - Python: Python 3 - Robot: Franka Research 3 (FR3)...
+
+### `main`
+
+- Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/main>
+- Summary: A small Tkinter desktop application for kinesthetic teaching and trajectory playback on a Franka Research 3 (FR3) with ROS 2. This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow. - OS: Ubuntu 24.04 LTS - ROS distro: ROS 2 Jazzy - Python: Python 3 - Robot: Franka Research 3 (FR3)...
+
+Note: this page is generated automatically in CI from live branch data and per-branch README content.
