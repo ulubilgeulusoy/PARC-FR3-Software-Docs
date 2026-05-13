@@ -10,6 +10,29 @@ This site is built with MkDocs + Material and is intended to help lab users:
 - Reference installation decisions and lessons learned
 - Follow startup and operation checklists
 
+## Content Ownership and Automation
+
+### Auto-generated content (GitHub Actions)
+
+These pages are generated and refreshed automatically in CI:
+- `docs/user-guide/fr3-example-capabilities/kinesthetic-teaching/branches-overview.md`
+- `docs/user-guide/fr3-example-capabilities/visual-servoing/branches-overview.md`
+
+Data source for auto-generated branch pages:
+- Live branch list from source repositories
+- Per-branch `README.md` content
+
+### Manual content (Arquilla Group updates required)
+
+All other documentation pages are manually maintained by the Arquilla group, including:
+- Getting Started pages
+- Installation Guide pages
+- User Guide basics/checklists/control pages
+- Kinesthetic Teaching and Visual Servoing `Overview` and `Quick Try` pages
+- Appendix pages
+
+Manual updates are required whenever workflows, hardware setup, branch recommendations, or safety procedures change.
+
 ## Tech Stack
 
 - MkDocs
