@@ -1,4 +1,4 @@
-name: Refresh Kinesthetic Branch Overview
+name: Build and Deploy Docs (Auto Branch Overview)
 
 on:
   workflow_dispatch:
@@ -7,15 +7,18 @@ on:
   push:
     branches:
       - main
-    paths:
-      - scripts/generate_kt_branches_overview.py
 
 permissions:
+  pages: write
+  id-token: write
   contents: write
 
 jobs:
-  refresh-branches-overview:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,10 +28,15 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install docs dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material
+
       - name: Generate Branches Overview
         run: python scripts/generate_kt_branches_overview.py
 
-      - name: Commit changes if needed
+      - name: Commit generated content if needed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -39,3 +47,18 @@ jobs:
             git commit -m "docs: refresh kinesthetic branches overview"
             git push
           fi
+
+      - name: Build site
+        run: mkdocs build --clean
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
