@@ -3,7 +3,7 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/branches>
 
-Last updated: 2026-05-13 19:55 UTC
+Last updated: 2026-05-13 20:01 UTC
 
 ## Live Branches
 
@@ -29,6 +29,11 @@ Last updated: 2026-05-13 19:55 UTC
 - This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow.
 - OS: Ubuntu 22.04 LTS
 - ROS distro: ROS 2 Humble
+
+**Workspace Context**
+- Main user-editable settings live in franka_teach_run_gui_v2.py
+- ROS_SETUP
+- ROBOT_IP
 
 **Main Workflows**
 - ### Teach mode
@@ -62,6 +67,11 @@ Last updated: 2026-05-13 19:55 UTC
 - OS: Ubuntu 22.04 LTS
 - ROS distro: ROS 2 Humble
 
+**Workspace Context**
+- Main user-editable settings live in franka_teach_run_gui_v2.py
+- ROS_SETUP
+- ROBOT_IP
+
 **Main Workflows**
 - ### Teach mode
 - Start Teach (Record) is the full recording workflow, not just a gravity-compensation shortcut
@@ -94,6 +104,11 @@ Last updated: 2026-05-13 19:55 UTC
 - OS: Ubuntu 24.04 LTS
 - ROS distro: ROS 2 Jazzy
 
+**Workspace Context**
+- Main user-editable settings live in franka_teach_run_gui_v2.py
+- ROS_SETUP
+- ROBOT_IP
+
 **Main Workflows**
 - ### Teach mode
 - Starts the minimal teach bringup automatically if it is not already running
@@ -125,6 +140,11 @@ Last updated: 2026-05-13 19:55 UTC
 - This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow.
 - OS: Ubuntu 24.04 LTS
 - ROS distro: ROS 2 Jazzy
+
+**Workspace Context**
+- Main user-editable settings live in franka_teach_run_gui_v2.py
+- ROS_SETUP
+- ROBOT_IP
 
 **Main Workflows**
 - ### Teach mode
