@@ -1,6 +1,6 @@
 # PARC-FR3-Software-Docs
 
-This repo contains the source files for the PARC FR3 Software Documentation site.
+This repo contains the source files for the PARC Franka Research 3 (FR3) Robot Arm Software Documentation site.
 The site is built using MkDocs + Material.
 The live site is available at: https://ulubilgeulusoy.github.io/PARC-FR3-Software-Docs/
 
