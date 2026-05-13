@@ -16,6 +16,7 @@ This site is built with MkDocs + Material and is intended to help lab users:
 
 - MkDocs
 - Material for MkDocs
+- GitHub Actions (automated build/deploy and generated docs content)
 
 ## Documentation Structure
 
@@ -53,19 +54,47 @@ Primary content lives in `docs/`, with site configuration in `mkdocs.yml`.
 - `docs/`: Markdown source pages and image assets
 - `docs/assets/`: Embedded images used by documentation pages
 - `mkdocs.yml`: Site configuration (theme, navigation, features)
+- `scripts/generate_kt_branches_overview.py`: Generates live Kinesthetic Teaching branch overview from GitHub branch/README data
+- `.github/workflows/refresh-kt-branches-overview.yml`: CI workflow that regenerates branch overview, builds docs, and deploys to GitHub Pages
 - `site/`: Generated static output from `mkdocs build`
 
 ## Local Development
 
-Local preview/deploy commands:
+Local preview commands:
 
 ```bash
 pip install mkdocs mkdocs-material
 mkdocs serve
-mkdocs gh-deploy
 ```
 
 For local preview, open: `http://127.0.0.1:8000`
+
+## Deployment Model (GitHub Actions)
+
+Deployment is fully CI-driven.
+
+- Do not rely on local `mkdocs gh-deploy` for routine publishing.
+- Publishing is handled by GitHub Actions workflow:
+  - `.github/workflows/refresh-kt-branches-overview.yml`
+- On workflow runs, CI will:
+  1. Generate/update Kinesthetic Teaching Branches Overview from live branch data.
+  2. Commit generated markdown if content changed.
+  3. Build the MkDocs site.
+  4. Deploy to GitHub Pages.
+
+Recommended Pages setting:
+- Repository Settings -> Pages -> Source: **GitHub Actions**
+
+## Kinesthetic Teaching Branches Overview Automation
+
+The page:
+- `docs/user-guide/fr3-example-capabilities/kinesthetic-teaching/branches-overview.md`
+
+is auto-generated in CI from:
+- Live branch list in `ulubilgeulusoy/franka_kinesthetic_teaching_GUI`
+- Per-branch `README.md` summary text
+
+This keeps branch names and summaries current without manual editing.
 
 ## Notes
 
