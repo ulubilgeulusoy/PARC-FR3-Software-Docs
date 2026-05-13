@@ -110,29 +110,68 @@ def get_first_available(sections: Dict[str, List[str]], candidates: List[str]) -
     return []
 
 
-def infer_workspace_context(readme_text: str, sections: Dict[str, List[str]], branch_name: str) -> List[str]:
-    explicit = get_first_available(
-        sections,
-        ["workspace context", "workspace", "configuration", "validated environment", "important notes"],
-    )
-    inferred = []
-    lower = readme_text.lower()
-    b_lower = branch_name.lower()
+def detect_workspace_info(readme_text: str, branch_name: str) -> Dict[str, str]:
+    text = readme_text
+    lower = text.lower()
+    candidates = []
 
-    if "failsafe" in lower or "failsafe" in b_lower:
-        inferred.append("Uses a failsafe/custom workspace variant; do not assume standard workspace defaults.")
+    exact_names = re.findall(r"\b([a-zA-Z0-9_-]*ws[a-zA-Z0-9_-]*)\b", text)
+    setup_paths = re.findall(r"/home/[^\s`\"']+/([a-zA-Z0-9_-]*ws[a-zA-Z0-9_-]*)/install/setup\.bash", text)
     if "franka_ws_jointfailsafe" in lower:
-        inferred.append("References `franka_ws_jointfailsafe` workflow or dependency.")
-    if "/home/parc/franka_ws/install/setup.bash" in readme_text:
-        inferred.append("Runtime setup sources `/home/parc/franka_ws/install/setup.bash`.")
-    if "run_gui.sh" in lower:
-        inferred.append("Entry point is `run_gui.sh`, which should source ROS/workspace setup before launch.")
+        candidates.append("franka_ws_jointfailsafe")
+    if "franka_ws" in lower:
+        candidates.append("franka_ws")
+    candidates.extend(exact_names)
+    candidates.extend(setup_paths)
 
-    points = explicit[:]
-    for p in inferred:
-        if p not in points:
-            points.append(p)
-    return points[:MAX_BULLETS]
+    seen = []
+    for c in candidates:
+        if c not in seen:
+            seen.append(c)
+    candidates = seen
+
+    if any("jointfailsafe" in c.lower() or "failsafe" in c.lower() for c in candidates):
+        ws_type = "custom"
+        confidence = "high"
+        ws_name = next((c for c in candidates if "failsafe" in c.lower()), candidates[0])
+    elif any(c.lower() == "franka_ws" for c in candidates):
+        ws_type = "standard"
+        confidence = "high"
+        ws_name = "franka_ws"
+    elif len(candidates) == 1:
+        ws_type = "custom"
+        confidence = "medium"
+        ws_name = candidates[0]
+    elif len(candidates) > 1:
+        ws_type = "mixed"
+        confidence = "low"
+        ws_name = ", ".join(candidates[:3])
+    else:
+        if "failsafe" in branch_name.lower():
+            ws_type = "custom"
+            confidence = "low"
+            ws_name = "unknown"
+        else:
+            ws_type = "unknown"
+            confidence = "low"
+            ws_name = "unknown"
+
+    evidence = []
+    if "franka_ws_jointfailsafe" in lower:
+        evidence.append("token: franka_ws_jointfailsafe")
+    if "franka_ws" in lower:
+        evidence.append("token: franka_ws")
+    if setup_paths:
+        evidence.append(f"path: /home/.../{setup_paths[0]}/install/setup.bash")
+    if not evidence and candidates:
+        evidence.append(f"pattern: {candidates[0]}")
+
+    return {
+        "type": ws_type,
+        "name": ws_name,
+        "confidence": confidence,
+        "evidence": "; ".join(evidence) if evidence else "none",
+    }
 
 
 def build_markdown(branches: List[Dict]) -> str:
@@ -171,14 +210,25 @@ def build_markdown(branches: List[Dict]) -> str:
             if not purpose:
                 purpose = collect_points(sections.get("_intro", []), max_points=2)
             env = get_first_available(sections, ["validated environment", "requirements"])
-            workspace = infer_workspace_context(readme, sections, name)
+            workspace_info = detect_workspace_info(readme, name)
+            workspace = [
+                f"Workspace Type: {workspace_info['type']}",
+                f"Workspace Name: {workspace_info['name']}",
+                f"Detection Confidence: {workspace_info['confidence']}",
+                f"Evidence: {workspace_info['evidence']}",
+            ]
             workflows = get_first_available(sections, ["features", "main application", "usage"])
             run_steps = get_first_available(sections, ["running", "usage"])
             caveats = get_first_available(sections, ["known assumptions and caveats", "important notes"])
         except Exception:
             purpose = []
             env = []
-            workspace = []
+            workspace = [
+                "Workspace Type: unknown",
+                "Workspace Name: unknown",
+                "Detection Confidence: low",
+                "Evidence: none",
+            ]
             workflows = []
             run_steps = []
             caveats = []
