@@ -29,9 +29,12 @@ All other documentation pages are manually maintained by the Arquilla group, inc
 - Installation Guide pages
 - User Guide basics/checklists/control pages
 - Kinesthetic Teaching and Visual Servoing `Overview` and `Quick Try` pages
+- HRI Experiments pages
 - Appendix pages
 
 Manual updates are required whenever workflows, hardware setup, branch recommendations, or safety procedures change.
+
+The `HRI Experiments` section currently contains starter placeholders and is in progress.
 
 ## Tech Stack
 
@@ -72,6 +75,11 @@ Top-level sections in the current navigation:
       - Branches Overview (auto-generated)
   - FR3 Non-Remote Control
   - FR3 Remote Control
+- HRI Experiments
+  - Overview
+  - Example Tasks
+  - Data Collection
+  - Data Analysis
 - Appendix
   - Glossary
 
@@ -85,7 +93,6 @@ Primary content lives in `docs/`, with site configuration in `mkdocs.yml`.
 - `scripts/generate_kt_branches_overview.py`: Generates Kinesthetic Teaching branch overview from live branch/README data
 - `scripts/generate_vs_branches_overview.py`: Generates Visual Servoing branch overview from live branch/README data
 - `.github/workflows/refresh-kt-branches-overview.yml`: CI workflow that regenerates branch overviews, builds docs, and deploys to GitHub Pages
-- `site/`: Generated static output from `mkdocs build`
 
 ## Local Development
 
