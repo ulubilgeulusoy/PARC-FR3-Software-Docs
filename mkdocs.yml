@@ -54,8 +54,8 @@ nav:
       - Sections:
           - Overview: hri-experiments/overview.md
           - Example Tasks: hri-experiments/example-tasks.md
-          - Data Collection: hri-experiments/data-collection.md
-          - Data Analysis: hri-experiments/data-analysis.md
+          - Data Collection Tools: hri-experiments/data-collection.md
+          - Data Analysis Tools: hri-experiments/data-analysis.md
   - Appendix:
       - Sections:
           - Glossary: appendix/glossary.md

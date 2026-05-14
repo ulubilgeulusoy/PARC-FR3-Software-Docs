@@ -1,4 +1,4 @@
-# Data Collection
+# Data Collection Tools
 
 Use this page to document high-level data collection procedures for human-robot interaction (HRI) experiments, including robot arm data collected through Lab Streaming Layer (LSL) or other methods, as well as additional data streams such as BIOPAC that may be integrated and synchronized through LSL.
 

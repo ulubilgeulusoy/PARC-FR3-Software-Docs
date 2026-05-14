@@ -78,8 +78,8 @@ Top-level sections in the current navigation:
 - HRI Experiments
   - Overview
   - Example Tasks
-  - Data Collection
-  - Data Analysis
+  - Data Collection Tools
+  - Data Analysis Tools
 - Appendix
   - Glossary
 

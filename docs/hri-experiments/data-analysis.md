@@ -1,4 +1,4 @@
-# Data Analysis
+# Data Analysis Tools
 
 Use this page to document analysis methods for HRI experiments.
 
