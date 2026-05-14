@@ -1,11 +1,7 @@
 # Example Tasks
 
-Use this page to document representative HRI tasks executed with FR3.
+Use this page to document representative human-robot interaction (HRI) tasks executed with FR3 in PARC.
 
-Recommended structure per task:
-- Task objective
-- Required hardware/software
-- Operator instructions
-- Robot behavior expectations
-- Success/failure criteria
-- Safety considerations
+## HRI Investment Pipe Inspection Task
+
+More details coming soon...
