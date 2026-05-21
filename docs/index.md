@@ -1,4 +1,13 @@
-﻿# PARC FR3 Software Documentation
+# PARC FR3 Software Documentation
+
+## Repository Status
+
+This documentation repository is no longer actively maintained.
+
+Content is being transitioned to the centralized Arquilla Group documentation site:
+- https://ucboulder.github.io/PARC-FR3-documents/
+
+For the latest updates, use that site.
 
 This website is the central documentation hub for FR3-related software workflows used in the PARC environment.
 

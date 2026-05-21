@@ -1,5 +1,19 @@
 # PARC-FR3-Software-Docs
 
+## Repository Status
+
+This repository is no longer actively maintained.
+
+Documentation is being transitioned to the centralized Arquilla Group location:
+- https://ucboulder.github.io/PARC-FR3-documents/
+
+Please use that site for the most up-to-date FR3 documentation.
+
+## Licensing
+
+- Code in this repository is licensed under the MIT License. See [LICENSE](LICENSE).
+- Documentation content is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). See [LICENSE-docs](LICENSE-docs).
+
 This repo contains the source files for the PARC Franka Research 3 (FR3) Robot Arm Software Documentation site.
 The site is built using MkDocs + Material.
 The live site is available at: https://ulubilgeulusoy.github.io/PARC-FR3-Software-Docs/
