@@ -3,13 +3,13 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/branches>
 
-Last updated: 2026-05-21 20:34 UTC
+Last updated: 2026-05-25 15:46 UTC
 
 ## Live Branches
 
-- `main` -> `eadbd35`
-- `new_GUI_test` -> `eadbd35`
-- `visp_gui_combined` -> `53b09bf`
+- `main` -> `e233ef7`
+- `new_GUI_test` -> `c3721a1`
+- `visp_gui_combined` -> `53fd449`
 
 ## Branch Summaries
 
@@ -17,7 +17,7 @@ Last updated: 2026-05-21 20:34 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/main>
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/main/README.md>
-- Head commit: `eadbd35`
+- Head commit: `e233ef7`
 
 **Branch Implementation Type**
 - mixed (Qt modular + single-file reference)
@@ -57,7 +57,7 @@ Last updated: 2026-05-21 20:34 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/new_GUI_test>
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/new_GUI_test/README.md>
-- Head commit: `eadbd35`
+- Head commit: `c3721a1`
 
 **Branch Implementation Type**
 - mixed (Qt modular + single-file reference)
@@ -88,7 +88,7 @@ Last updated: 2026-05-21 20:34 UTC
 - arm_moving state post
 
 **Branch Delta vs Main**
-- Same commit as `main` (no branch-level code delta at head).
+- Different commit from `main` (branch-specific implementation/version).
 
 **Operational Readiness**
 - Ready for quick try (with calibration verified)
@@ -97,7 +97,7 @@ Last updated: 2026-05-21 20:34 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/tree/visp_gui_combined>
 - README: <https://github.com/ulubilgeulusoy/FR3_visual_servo_examples/blob/visp_gui_combined/README.md>
-- Head commit: `53b09bf`
+- Head commit: `53fd449`
 
 **Branch Implementation Type**
 - single-file combined ViSP app

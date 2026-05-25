@@ -3,14 +3,14 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/branches>
 
-Last updated: 2026-05-21 20:34 UTC
+Last updated: 2026-05-25 15:46 UTC
 
 ## Live Branches
 
-- `Humble_KT` -> `cb958d2`
-- `Humble_KT_failsafe` -> `75f8f70`
-- `Jazzy_KT` -> `a7ed711`
-- `main` -> `a7ed711`
+- `Humble_KT` -> `8b5bb0b`
+- `Humble_KT_failsafe` -> `5f87376`
+- `Jazzy_KT` -> `681b8ae`
+- `main` -> `dc842fc`
 
 ## README Summaries
 
@@ -18,7 +18,7 @@ Last updated: 2026-05-21 20:34 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Humble_KT>
 - README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/Humble_KT/README.md>
-- Head commit: `cb958d2`
+- Head commit: `8b5bb0b`
 
 **Purpose**
 - This repo contains one main application: a GUI that manages two workflows
@@ -26,9 +26,9 @@ Last updated: 2026-05-21 20:34 UTC
 - replay a recorded trajectory through the FR3 joint trajectory controller
 
 **Validated Environment**
-- This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow.
-- OS: Ubuntu 22.04 LTS
-- ROS distro: ROS 2 Humble
+- This branch is currently set up and validated for a native Ubuntu 22.04.5 + ROS 2 Humble workflow.
+- OS: Ubuntu 22.04.5 LTS
+- Real-Time Kernel: Linux 6.9.0-rt5 (PREEMPT_RT enabled)
 
 **Workspace Context**
 - Workspace Type: mixed
@@ -55,7 +55,7 @@ Last updated: 2026-05-21 20:34 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Humble_KT_failsafe>
 - README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/Humble_KT_failsafe/README.md>
-- Head commit: `75f8f70`
+- Head commit: `5f87376`
 
 **Purpose**
 - This repo contains one main application: a GUI that manages two workflows
@@ -63,9 +63,9 @@ Last updated: 2026-05-21 20:34 UTC
 - replay a recorded trajectory through the FR3 joint trajectory controller
 
 **Validated Environment**
-- This branch is currently set up and maintained for a native Ubuntu 22.04 + ROS 2 Humble workflow.
-- OS: Ubuntu 22.04 LTS
-- ROS distro: ROS 2 Humble
+- This branch is currently set up and validated for a native Ubuntu 22.04.5 + ROS 2 Humble workflow.
+- OS: Ubuntu 22.04.5 LTS
+- Real-Time Kernel: Linux 6.9.0-rt5 (PREEMPT_RT enabled)
 
 **Workspace Context**
 - Workspace Type: custom
@@ -92,7 +92,7 @@ Last updated: 2026-05-21 20:34 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/Jazzy_KT>
 - README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/Jazzy_KT/README.md>
-- Head commit: `a7ed711`
+- Head commit: `681b8ae`
 
 **Purpose**
 - This repo contains one main application: a GUI that manages two workflows
@@ -100,14 +100,14 @@ Last updated: 2026-05-21 20:34 UTC
 - replay a recorded trajectory through the FR3 joint trajectory controller
 
 **Validated Environment**
-- This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow.
-- OS: Ubuntu 24.04 LTS
-- ROS distro: ROS 2 Jazzy
+- This branch is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow.
+- OS: Ubuntu 24.04 LTS (Noble)
+- Real-Time Kernel: Linux 6.12.79-rt17 (PREEMPT_RT enabled)
 
 **Workspace Context**
-- Workspace Type: standard
-- Workspace Name: franka_ws
-- Detection Confidence: high
+- Workspace Type: mixed
+- Workspace Name: workflows, shows, rows
+- Detection Confidence: low
 
 **Main Workflows**
 - ### Teach mode
@@ -129,7 +129,7 @@ Last updated: 2026-05-21 20:34 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/main>
 - README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/main/README.md>
-- Head commit: `a7ed711`
+- Head commit: `dc842fc`
 
 **Purpose**
 - This repo contains one main application: a GUI that manages two workflows
@@ -137,13 +137,13 @@ Last updated: 2026-05-21 20:34 UTC
 - replay a recorded trajectory through the FR3 joint trajectory controller
 
 **Validated Environment**
-- This repo is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow.
-- OS: Ubuntu 24.04 LTS
-- ROS distro: ROS 2 Jazzy
+- This branch is currently set up and validated for a native Ubuntu 24.04 + ROS 2 Jazzy workflow.
+- OS: Ubuntu 24.04 LTS (Noble)
+- Real-Time Kernel: Linux 6.12.79-rt17 (PREEMPT_RT enabled)
 
 **Workspace Context**
-- Workspace Type: standard
-- Workspace Name: franka_ws
+- Workspace Type: custom
+- Workspace Name: franka_ws_jointfailsafe
 - Detection Confidence: high
 
 **Main Workflows**
