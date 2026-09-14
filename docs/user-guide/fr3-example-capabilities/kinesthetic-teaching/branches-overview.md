@@ -3,14 +3,14 @@
 This page is auto-generated from the live GitHub branch list:
 <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/branches>
 
-Last updated: 2026-09-07 18:00 UTC
+Last updated: 2026-09-14 18:17 UTC
 
 ## Live Branches
 
 - `Humble_KT` -> `8b5bb0b`
 - `Humble_KT_failsafe` -> `5f87376`
 - `Jazzy_KT` -> `681b8ae`
-- `main` -> `dc842fc`
+- `main` -> `11b836e`
 
 ## README Summaries
 
@@ -129,7 +129,7 @@ Last updated: 2026-09-07 18:00 UTC
 
 - Branch URL: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/tree/main>
 - README: <https://github.com/ulubilgeulusoy/franka_kinesthetic_teaching_GUI/blob/main/README.md>
-- Head commit: `dc842fc`
+- Head commit: `11b836e`
 
 **Purpose**
 - This repo contains one main application: a GUI that manages two workflows
